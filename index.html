@@ -31,27 +31,33 @@
         // read file HEADER.html
         readFile("./header.html")
             .then(value => id_header.innerHTML = value)
+            .then(() => {
+                // get data CuaHang from database to HEADER
+                getData('Ma_so_Xu_ly=DOC_CUA_HANG')
+                    .then(value => {
+                        Th_Cua_hang.innerHTML = xuatCuaHang(value);
+                    })
+            })
             .catch(err => console.log(err))
 
-        // get data CuaHang from database to HEADER
-        getData('Ma_so_Xu_ly=DOC_CUA_HANG')
-            .then(value => {
-                Th_Cua_hang.innerHTML = xuatCuaHang(value);
-            })
+
 
         //read file MAIN.html
         function loadMain(url) {
             readFile(url)
                 .then(value => id_main.innerHTML = value)
-                .catch(err => console.log(err))
-
-            // get data dsDienThoai from database
-            getData('Ma_so_Xu_ly=DOC_DANH_SACH_DIEN_THOAI')
-                .then(value => {
-                    dsDienThoai = value;
-                    xuatDienThoai(dsDienThoai);
-                    xuatDienThoaiNoiBat(dsDienThoai);
+                .then(() => {
+                    // get data dsDienThoai from database
+                    getData('Ma_so_Xu_ly=DOC_DANH_SACH_DIEN_THOAI')
+                        .then(value => {
+                            dsDienThoai = value;
+                            xuatDienThoai(dsDienThoai);
+                            xuatDienThoaiNoiBat(dsDienThoai);
+                        })
                 })
+                .catch (err => console.log(err))
+
+
         }
         loadMain("./main.html")
 

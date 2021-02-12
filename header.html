@@ -1,51 +1,38 @@
 <!DOCTYPE html>
 <!-- Ảnh NỀN -->
 <div class="container-fluid">
-    <div class="py-5 bg-image-full" style="background-image: url('./images/banner-ok.jpg');">
-        <div style="height: 100px;">
-            <div class="row text-center">
-                <div class="col-6 col-xl-3 col-md-3 align-text-top" id=Th_Cua_hang>
-                    ...
-                </div>
-                <div class="col-6 col-xl-9 col-md-9 ">
-                    <div class="fixed-top text-right mr-4" style="margin-top:5rem ;" id="Th_Mua_hang"
-                        onclick="window.location='../gio-hang/.'">
-                        <span class="text-white bg-danger btn border border-danger">
-                            <u id="Th_Gio_hang">0</u>
-                            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                        </span>
-                    </div>
-                </div>
-            </div>
+    <div class="row">
+        <div class="col" id=Th_Cua_hang>
         </div>
     </div>
 </div>
 
+<div class="container-fluid">
+    <!-- Dropdown MENU -->
+    <nav class="navbar navbar-expand-sm navbar-light bg-light">
+        <div class="collapse navbar-collapse" id="collapsibleNavId">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item">
+                    <a class="navbar-brand" href="#" onclick="loadProduct('product.html')">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#">Ecomerce</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#">Schools</a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link disabled" href="#">Recipes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" onclick="loadMain('contact.html')">Contact</a>
+                </li>
 
-<!-- Dropdown MENU -->
-<nav class="navbar navbar-expand-sm navbar-light bg-light">
-    <div class="collapse navbar-collapse" id="collapsibleNavId">
-        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-            <li class="nav-item">
-                <a class="navbar-brand" href="#" onclick="loadMain('main.html')">Home</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link disabled" href="#">Ecomerce</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link disabled" href="#">Schools</a>
-            </li>
-            <li class="nav-item ">
-                <a class="nav-link disabled" href="#">Recipes</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#" onclick="loadMain('contact.html')">Contact</a>
-            </li>
-
-        </ul>
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="text" placeholder="Nhập tìm kiếm">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
-    </div>
-</nav>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="text" placeholder="Nhập tìm kiếm">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+</div>

@@ -27,49 +27,56 @@
 
 
     <script>
+        const log = console.log; //for testing
         var dsDienThoai = {};
+
         // read file HEADER.html
-        readFile("./header.html")
-            .then(value => id_header.innerHTML = value)
-            .then(() => {
-                // get data CuaHang from database to HEADER
-                getData('Ma_so_Xu_ly=DOC_CUA_HANG')
-                    .then(value => {
-                        Th_Cua_hang.innerHTML = xuatCuaHang(value);
-                    })
+        readFile('header.html')
+            .then(value => {
+                id_header.innerHTML = value
             })
             .catch(err => console.log(err))
+
+        // get data CuaHang from database to HEADER
+        getData('Ma_so_Xu_ly=DOC_CUA_HANG')
+            .then(value => {
+                Th_Cua_hang.innerHTML = xuatCuaHang(value);
+            })
 
 
 
         //read file MAIN.html
         function loadMain(url) {
             readFile(url)
-                .then(value => id_main.innerHTML = value)
-                .then(() => {
-                    // get data dsDienThoai from database
-                    getData('Ma_so_Xu_ly=DOC_DANH_SACH_DIEN_THOAI')
-                        .then(value => {
-                            dsDienThoai = value;
-                            xuatDienThoai(dsDienThoai);
-                            xuatDienThoaiNoiBat(dsDienThoai);
-                        })
+                .then(value => {
+                    id_main.innerHTML = value
                 })
-                .catch (err => console.log(err))
-
-
+                .catch(err => console.log(err))
         }
-        loadMain("./main.html")
+
+
+        loadProduct('product.html')
+        function loadProduct(url) {
+            loadMain(url);
+            getData('Ma_so_Xu_ly=DOC_DANH_SACH_DIEN_THOAI')
+                .then(value => {
+                    dsDienThoai = value;
+                    xuatDienThoai(dsDienThoai);
+                    xuatDienThoaiNoiBat(dsDienThoai);
+                })
+        }
+
 
 
         //read file FOOTER.html
-        readFile("./footer.html")
+        readFile('footer.html')
             .then(value => id_footer.innerHTML = value)
             .catch(err => console.log(err))
 
+
     </script>
 
-
+    <div id="id_test"></div>
     <!-- Lấy Bootstrap -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"

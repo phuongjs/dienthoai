@@ -45,7 +45,7 @@ function getData(thamSo) {
 function xuatCuaHang(cuaHang) {
     let html = `
     <h2 class="mb-0 ">${cuaHang[0].Ten}</h2>
-    <footer class="blockquote-footer"> <cite title="Source Title">Xin Chào</cite></footer>
+    <footer class="blockquote-footer"> <cite title="Source Title">Database Loaded!</cite></footer>
     <footer class="blockquote-footer"> <cite title="Source Title">
             <i class="fa fa-envelope-o" aria-hidden="true"></i> : ${cuaHang[0].Dia_chi} <br>
             <i class="fa fa-phone" aria-hidden="true"></i>: <a href="${cuaHang[0].Dien_thoai}">${cuaHang[0].Dien_thoai}</a>

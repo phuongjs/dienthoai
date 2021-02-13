@@ -30,7 +30,7 @@
         const log = console.log; //for testing
         var dsDienThoai = {};
 
-        // read file HEADER.html by ASYNC
+        // read file HEADER.html in ASYNC
         loadHeader('header.html')
         async function loadHeader(url) {
             try {
@@ -42,7 +42,7 @@
         }
 
 
-        // // read file HEADER.html by PROMISE
+        // // read file HEADER.html in PROMISE
         // readFile('header.html')
         //     .then(value => id_header.innerHTML = value)
         //     .then(() => getData('Ma_so_Xu_ly=DOC_CUA_HANG'))
@@ -56,7 +56,7 @@
                 .catch(err => console.log(err))
         }
 
-        //load MAIN with product.html by ASYNC
+        //load MAIN with product.html in ASYNC
         loadProduct('product.html')
         async function loadProduct(url) {
             try {
@@ -69,19 +69,19 @@
             catch (error) { console.log(error) }
         }
 
-        // //load MAIN with product.html by PROMISE
-        // loadProduct('product.html')
-        // function loadProduct(url) {
-        //     readFile(url)
-        //         .then(value => id_main.innerHTML = value)
-        //         .then(() => getData('Ma_so_Xu_ly=DOC_DANH_SACH_DIEN_THOAI'))
-        //         .then(data => {
-        //             dsDienThoai = data;
-        //             xuatDienThoai(dsDienThoai);
-        //             xuatDienThoaiNoiBat(dsDienThoai);
-        //         })
-        //         .catch(err => console.log(err))
-        // }
+        //load MAIN with product.html in PROMISE
+        loadProduct('product.html')
+        function loadProduct(url) {
+            readFile(url)
+                .then(value => id_main.innerHTML = value)
+                .then(() => getData('Ma_so_Xu_ly=DOC_DANH_SACH_DIEN_THOAI'))
+                .then(data => {
+                    dsDienThoai = data;
+                    xuatDienThoai(dsDienThoai);
+                    xuatDienThoaiNoiBat(dsDienThoai);
+                })
+                .catch(err => console.log(err))
+        }
 
         //read file FOOTER.html
         readFile('footer.html')

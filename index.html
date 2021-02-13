@@ -32,41 +32,31 @@
 
         // read file HEADER.html
         readFile('header.html')
-            .then(value => {
-                id_header.innerHTML = value
-            })
+            .then(value => id_header.innerHTML = value)
+            .then(() => getData('Ma_so_Xu_ly=DOC_CUA_HANG'))
+            .then(data => Th_Cua_hang.innerHTML = xuatCuaHang(data))
             .catch(err => console.log(err))
 
-        // get data CuaHang from database to HEADER
-        getData('Ma_so_Xu_ly=DOC_CUA_HANG')
-            .then(value => {
-                Th_Cua_hang.innerHTML = xuatCuaHang(value);
-            })
-
-
-
-        //read file MAIN.html
+        //load MAIN with contact.html
         function loadMain(url) {
             readFile(url)
-                .then(value => {
-                    id_main.innerHTML = value
-                })
+                .then(value => id_main.innerHTML = value)
                 .catch(err => console.log(err))
         }
 
-
+        //load MAIN with product.html
         loadProduct('product.html')
         function loadProduct(url) {
-            loadMain(url);
-            getData('Ma_so_Xu_ly=DOC_DANH_SACH_DIEN_THOAI')
-                .then(value => {
-                    dsDienThoai = value;
+            readFile(url)
+                .then(value => id_main.innerHTML = value)
+                .then(() => getData('Ma_so_Xu_ly=DOC_DANH_SACH_DIEN_THOAI'))
+                .then(data => {
+                    dsDienThoai = data;
                     xuatDienThoai(dsDienThoai);
                     xuatDienThoaiNoiBat(dsDienThoai);
                 })
+                .catch(err => console.log(err))
         }
-
-
 
         //read file FOOTER.html
         readFile('footer.html')
